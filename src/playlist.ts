@@ -1,58 +1,113 @@
-// interface Clonable<T> {
-//   clon(): T
-//}
-
-// class Playlist implements Clonable<Playlist> {
-//   constructor(private title: string, private songs: LinkedList, private genre: string) {}
-// }
-
-export class Song {
-  constructor(private name: string, private genre: string) {}
+interface Clonable<T> {
+  clon(): T
 }
+export class Playlist implements Clonable<Playlist> {
+  private title: string = ''
+  private songs: Song[] = [] 
+  private description: string = ''
 
-class Node{
-  constructor(private value: Song, private next: Node|null = null) {}
-
-  getValue() {
-    return this.value
+  getTitle() {
+    return this.title
   }
 
-  getNext() {
-    return this.next
+  getSongs() {
+    return this.songs
   }
 
-  setNext(node: Node) {
-    this.next = node
-  }
-}
-
-export class LinkedList {
-
-  constructor(private head: Node|null = null, private tail: Node|null = null, private length: number = 0) {}
-
-  append(song: Song) {
-    const newNode = new Node(song)
-    if(!this.head) {
-      this.head = newNode
-    } else {
-      this.tail?.setNext(newNode)
-    }
-
-    this.tail = newNode
-    this.length++
+  getDescription() {
+    return this.description
   }
 
-  size() {
-    return this.length
+  setTitle(title: string) {
+    this.title = title
   }
 
-  print() {
-    let current = this.head
-    while (current) {
-      console.log(current.getValue())
-      current = current.getNext()
-    }
-    
+  setSongs(songs: Song[]) {
+    this.songs = songs
+  }
+
+  setDescription(description: string) {
+    this.description = description
+  }
+
+  clon(): Playlist {
+    const playlist = new Playlist()
+    playlist.setTitle(this.title)
+    playlist.setSongs([...this.songs])
+    playlist.setDescription(this.description)
+    return playlist
   }
   
 }
+
+export class Song {
+  private name: string
+  private genre: string 
+  private artist: string 
+
+  // Sobrecarga del constructor
+  constructor()
+  constructor(name: string, genre: string, artist: string)
+
+  constructor(name?: string, genre?: string, artist?: string) {
+    this.name = name ?? ''
+    this.genre = genre ?? ''
+    this.artist = artist ?? ''
+  }
+
+  getName() {
+    return this.name
+  }
+
+  getGenre() {
+    return this.genre
+  }
+
+  getArtist() {
+    return this.artist
+  }
+
+  setName(name: string) {
+    this.name = name
+  }
+
+  setGenre(genre: string) {
+    this.genre = genre
+  }
+
+  setArtist(artist: string) {
+    this.artist = artist
+  }
+}
+
+// Create sample data
+export const song1: Song = new Song('One', 'Rock', 'Metallica')
+const song2: Song = new Song('One step closer', 'Rock', 'Linking park')
+const song3: Song = new Song('Freak on a leash', 'Nu metal', 'Korn')
+const song4: Song = new Song('Chop suey', 'Nu metal', 'System of a down')
+
+const song5: Song = new Song('Poker face', 'Pop', 'Lady Gaga')
+const song6: Song = new Song('Toxic', 'Pop', 'Britney Spears')
+const song7: Song = new Song('I wonder', 'Pop', 'Kanye West')
+
+const playlist1 = new Playlist()
+playlist1.setTitle('rocksito')
+playlist1.setDescription('Pum pum pa, pum pa pa pum')
+playlist1.getSongs().push(song1)
+playlist1.getSongs().push(song2)
+playlist1.getSongs().push(song3)
+playlist1.getSongs().push(song4)
+
+const playlist2 = new Playlist()
+playlist2.setTitle('popsito')
+playlist2.setDescription('mood for party')
+playlist2.getSongs().push(song5)
+playlist2.getSongs().push(song6)
+playlist2.getSongs().push(song7)
+
+
+export const playlistData: Playlist[] = [
+  playlist1,
+  playlist2
+] 
+

@@ -1,9 +1,20 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import List from './List'
+import { playlistData } from './playlist'
+import List from './components/List'
+import SidebarRight from './components/Sidebar'
+
+import './styles/index.css'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <List/>
+    <div className='main-content'>
+      {playlistData.map(item => {
+        return (
+          <List playlist={item}/>
+        )
+      })}
+    </div>
+    <SidebarRight />
   </StrictMode>,
 )

@@ -1,0 +1,79 @@
+body {
+  font-family: monospace;
+}
+
+.song-item {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  cursor: pointer;
+  border-bottom: 1px solid #444;
+  transition: background 0.3s;
+}
+
+.song-item:hover {
+  background: #222;
+}
+
+.song-info {
+  flex: 1;
+}
+
+.song-title {
+  color: white;
+  font-weight: bold;
+}
+
+.song-artist {
+  color: #bbb;
+  font-size: 0.9rem;
+}
+
+.playlist-card {
+  background-color: #181818;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.3s;
+  justify-content: space-between;
+}
+
+.playlist-card:hover {
+  background-color: #282828;
+}
+
+.playlist-title {
+  color: white;
+  font-size: 24;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+button {
+  background-color: #1db954;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 8px 16px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background-color: #1ed760;
+  transform: scale(1.05);
+}
+
+.main-content {
+  transition: margin-right 0.3s ease-in-out;
+  margin-right: 100px;
+}
+
+/* Cuando la sidebar esté abierta, empuja el contenido */
+.sidebar-open .main-content {
+  margin-right: 400px; /* Igual al ancho de la sidebar */
+}

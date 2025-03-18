@@ -1,0 +1,54 @@
+/* Botón de apertura/cierre */
+.toggle-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #1db954;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+.toggle-button:hover {
+  background-color: #1ed760;
+}
+
+/* Barra lateral derecha */
+.sidebar-right {
+  position: fixed;
+  top: 0;
+  right: -300px; /* Oculta la barra inicialmente */
+  width: 300px;
+  height: 100%;
+  background: #181818;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.5);
+  transition: right 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  color: white;
+}
+
+/* Mostrar la barra cuando está abierta */
+.sidebar-right.open {
+  right: 0;
+}
+
+/* Contenido de la barra */
+.sidebar-content {
+  margin-top: 20px;
+}
+
+.sidebar-content h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.sidebar-content p {
+  font-size: 14px;
+  color: #b3b3b3;
+}
